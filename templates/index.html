@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Private Chat</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top left, #1b5e4b 0%, transparent 35%),
+                radial-gradient(circle at bottom right, #075e54 0%, transparent 35%),
+                #071e1a;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 420px;
+        }
+
+        .logo {
+            width: 78px;
+            height: 78px;
+            margin: 0 auto 18px;
+
+            border-radius: 24px;
+
+            background: #075e54;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 36px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.35),
+                inset 0 0 20px rgba(255,255,255,0.05);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 29px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: 28px;
+
+            color: #a7c5bf;
+            font-size: 14px;
+        }
+
+        .card {
+            background: rgba(10, 42, 36, 0.88);
+
+            border: 1px solid rgba(255,255,255,0.07);
+
+            border-radius: 24px;
+
+            padding: 28px 23px;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.35),
+                inset 0 1px rgba(255,255,255,0.04);
+
+            backdrop-filter: blur(18px);
+        }
+
+        .welcome {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            margin-bottom: 16px;
+        }
+
+        .input-box label {
+            display: block;
+
+            font-size: 13px;
+            color: #9ebbb5;
+
+            margin-bottom: 8px;
+        }
+
+        .input-box input {
+            width: 100%;
+
+            padding: 15px 16px;
+
+            border-radius: 14px;
+
+            border: 1px solid #244d45;
+
+            outline: none;
+
+            background: #0c2d27;
+
+            color: white;
+
+            font-size: 15px;
+
+            transition: 0.2s;
+        }
+
+        .input-box input:focus {
+            border-color: #25d366;
+
+            box-shadow: 0 0 0 3px rgba(37,211,102,0.10);
+        }
+
+        .input-box input::placeholder {
+            color: #66827c;
+        }
+
+        .login-btn {
+            width: 100%;
+
+            border: none;
+
+            padding: 15px;
+
+            border-radius: 14px;
+
+            background: #25d366;
+
+            color: #062c20;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            margin-top: 7px;
+
+            transition: 0.2s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-1px);
+
+            filter: brightness(1.05);
+        }
+
+        .login-btn:active {
+            transform: scale(0.98);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 23px 0;
+
+            color: #66827c;
+
+            font-size: 12px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+
+            height: 1px;
+
+            flex: 1;
+
+            background: #24453f;
+        }
+
+        .register {
+            text-align: center;
+
+            color: #91aaa5;
+
+            font-size: 14px;
+        }
+
+        .register a {
+            color: #25d366;
+
+            text-decoration: none;
+
+            font-weight: 700;
+        }
+
+        .security {
+            text-align: center;
+
+            margin-top: 22px;
+
+            font-size: 11px;
+
+            color: #56736d;
+        }
+
+        @media (max-width: 420px) {
+
+            .card {
+                padding: 24px 18px;
+            }
+
+            .title {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo">
+            💬
+        </div>
+
+        <h1 class="title">Private Chat</h1>
+
+        <p class="subtitle">
+            Your private space to connect
+        </p>
+
+        <div class="card">
+
+            <div class="welcome">
+                Welcome back 👋
+            </div>
+
+            <form action="/login" method="POST">
+
+                <div class="input-box">
+
+                    <label>Username</label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Enter your username"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+                <button class="login-btn" type="submit">
+                    Sign In
+                </button>
+
+            </form>
+
+            <div class="divider">
+                OR
+            </div>
+
+            <div class="register">
+                Don't have an account?
+                <a href="/register">Create account</a>
+            </div>
+
+        </div>
+
+        <div class="security">
+            🔒 Private • Secure • Personal
+        </div>
+
+    </div>
+
+</body>
+</html>

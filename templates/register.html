@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account • Private Chat</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+
+            background:
+                radial-gradient(circle at top right, #176b58 0%, transparent 35%),
+                radial-gradient(circle at bottom left, #075e54 0%, transparent 35%),
+                #071e1a;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 420px;
+        }
+
+        .logo {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 16px;
+
+            border-radius: 22px;
+            background: #075e54;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 32px;
+
+            box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 27px;
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-top: 7px;
+            margin-bottom: 25px;
+
+            color: #9dbab4;
+            font-size: 14px;
+        }
+
+        .card {
+            padding: 27px 22px;
+
+            border-radius: 24px;
+
+            background: rgba(10, 42, 36, 0.9);
+
+            border: 1px solid rgba(255,255,255,0.07);
+
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+
+            backdrop-filter: blur(18px);
+        }
+
+        .heading {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            color: #9dbab4;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+
+            border-radius: 14px;
+            border: 1px solid #244d45;
+
+            background: #0c2d27;
+            color: white;
+
+            outline: none;
+            font-size: 15px;
+
+            transition: 0.2s;
+        }
+
+        input:focus {
+            border-color: #25d366;
+
+            box-shadow:
+                0 0 0 3px rgba(37,211,102,0.1);
+        }
+
+        input::placeholder {
+            color: #66827c;
+        }
+
+        .create-btn {
+            width: 100%;
+
+            margin-top: 7px;
+
+            padding: 15px;
+
+            border: none;
+            border-radius: 14px;
+
+            background: #25d366;
+            color: #062c20;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .create-btn:hover {
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+        }
+
+        .create-btn:active {
+            transform: scale(0.98);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin: 23px 0;
+
+            color: #66827c;
+            font-size: 12px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+
+            background: #24453f;
+        }
+
+        .login {
+            text-align: center;
+
+            color: #91aaa5;
+            font-size: 14px;
+        }
+
+        .login a {
+            color: #25d366;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .security {
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #56736d;
+            font-size: 11px;
+        }
+
+        @media (max-width: 420px) {
+            .card {
+                padding: 24px 18px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo">
+            💬
+        </div>
+
+        <h1>Create your account</h1>
+
+        <p class="subtitle">
+            Join your private space
+        </p>
+
+        <div class="card">
+
+            <div class="heading">
+                Let's get started 🚀
+            </div>
+
+            <form action="/register" method="POST">
+
+                <div class="input-group">
+                    <label>Username</label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Choose a username"
+                        autocomplete="username"
+                        minlength="3"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        minlength="4"
+                        required
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    class="create-btn"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+            <div class="divider">
+                OR
+            </div>
+
+            <div class="login">
+                Already have an account?
+                <a href="/">Sign In</a>
+            </div>
+
+        </div>
+
+        <div class="security">
+            🔒 Your private space starts here
+        </div>
+
+    </div>
+
+</body>
+</html>
