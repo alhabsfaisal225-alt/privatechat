@@ -10,7 +10,7 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>Private Chat</title>
+<title>Synapse</title>
 
 <style>
 
@@ -108,13 +108,18 @@ body.emerald {
     width:43px;
     height:43px;
     border-radius:13px;
-    background:var(--accent);
-    color:#06291f;
+    background:var(--card2);
+    border:1px solid var(--border);
     display:flex;
     align-items:center;
     justify-content:center;
-    font-weight:bold;
-    font-size:20px;
+    overflow:hidden;
+}
+
+.brand-icon img {
+    width:34px;
+    height:34px;
+    object-fit:contain;
 }
 
 .brand-name {
@@ -321,8 +326,9 @@ body.emerald {
 }
 
 .private {
-    color:var(--muted);
+    color:var(--accent);
     font-size:11px;
+    font-weight:bold;
 }
 
 .top-actions {
@@ -546,7 +552,13 @@ textarea {
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:33px;
+    overflow:hidden;
+}
+
+.welcome-icon img {
+    width:52px;
+    height:52px;
+    object-fit:contain;
 }
 
 .welcome h2 {
@@ -697,6 +709,7 @@ textarea {
         min-width:68px;
         padding:13px 5px;
         border-radius:0;
+        flex-shrink:0;
     }
 
     .brand {
@@ -770,6 +783,7 @@ textarea {
 
     .input-area {
         padding:7px;
+        flex-shrink:0;
     }
 
     .top-actions .icon-btn {
@@ -799,11 +813,14 @@ textarea {
     <div class="brand">
 
         <div class="brand-icon">
-            P
+            <img
+                src="/static/synapse-logo%20%282%29.png"
+                alt="Synapse"
+            >
         </div>
 
         <div class="brand-name">
-            Private Chat
+            Synapse
         </div>
 
     </div>
@@ -950,7 +967,7 @@ textarea {
         </button>
 
         <div class="private">
-            🔒 Private
+            Synapse
         </div>
 
     </div>
@@ -1087,7 +1104,7 @@ textarea {
 
     <div class="empty">
 
-        🔒
+        💬
 
         <br><br>
 
@@ -1096,7 +1113,7 @@ textarea {
         <br>
 
         <small>
-            Start your private conversation.
+            Start your conversation.
         </small>
 
     </div>
@@ -1164,16 +1181,19 @@ textarea {
     <div>
 
         <div class="welcome-icon">
-            🔒
+            <img
+                src="/static/synapse-logo%20%282%29.png"
+                alt="Synapse"
+            >
         </div>
 
         <h2>
-            Private Chat
+            Welcome to Synapse
         </h2>
 
         <p>
             Select a person from the left<br>
-            to start a private conversation.
+            to start a conversation.
         </p>
 
     </div>
@@ -1641,9 +1661,9 @@ async function loadMessages(
 
             messagesBox.innerHTML =
                 '<div class="empty">' +
-                '🔒<br><br>' +
+                '💬<br><br>' +
                 'No messages yet.<br>' +
-                '<small>Start your private conversation.</small>' +
+                '<small>Start your conversation.</small>' +
                 '</div>';
 
             return;
@@ -2600,7 +2620,7 @@ function applyTheme(theme) {
     }
 
     localStorage.setItem(
-        "privatechat_theme",
+        "synapse_theme",
         theme
     );
 }
@@ -2817,7 +2837,7 @@ async function enableNotifications() {
     ) {
 
         new Notification(
-            "Private Chat",
+            "Synapse",
             {
                 body:
                     "Notifications are enabled."
@@ -2879,7 +2899,7 @@ async function checkNewMessages() {
             ) {
 
                 new Notification(
-                    latest.sender,
+                    "Synapse",
                     {
                         body:
                             latest.message ||
@@ -2903,7 +2923,7 @@ async function checkNewMessages() {
 
 const savedTheme =
     localStorage.getItem(
-        "privatechat_theme"
+        "synapse_theme"
     );
 
 if (savedTheme) {

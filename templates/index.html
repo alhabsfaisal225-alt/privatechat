@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
-<meta name="theme-color" content="#075e54">
-<link rel="icon" type="image/png" href="/static/synapse-logo%20%282%29.png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Private Chat</title>
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#075e54">
+
+    <link rel="icon" type="image/png"
+          href="/static/synapse-logo%20%282%29.png">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Synapse</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -19,84 +26,119 @@
 
         body {
             min-height: 100vh;
+
             background:
-                radial-gradient(circle at top left, #1b5e4b 0%, transparent 35%),
-                radial-gradient(circle at bottom right, #075e54 0%, transparent 35%),
-                #071e1a;
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(37, 211, 102, 0.20),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(7, 94, 84, 0.45),
+                    transparent 35%
+                ),
+                #061b17;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
             color: white;
+
+            overflow-x: hidden;
         }
 
         .container {
             width: 92%;
             max-width: 420px;
+            padding: 25px 0;
         }
 
+        /* LOGO */
+
         .logo {
-            width: 78px;
-            height: 78px;
-            margin: 0 auto 18px;
+            width: 92px;
+            height: 92px;
 
-            border-radius: 24px;
+            margin: 0 auto 17px;
 
-            background:transparent;
+            border-radius: 28px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            font-size: 36px;
+            background: rgba(255,255,255,0.035);
+
+            border: 1px solid rgba(255,255,255,0.08);
 
             box-shadow:
-                0 10px 30px rgba(0,0,0,0.35),
-                inset 0 0 20px rgba(255,255,255,0.05);
+                0 15px 40px rgba(0,0,0,0.35),
+                inset 0 1px rgba(255,255,255,0.08);
+
+            backdrop-filter: blur(15px);
         }
+
         .logo img {
-    width: 52px;
-    height: 52px;
-    object-fit: contain;
+            width: 66px;
+            height: 66px;
+
+            object-fit: contain;
+
+            display: block;
         }
+
+        /* TITLE */
+
         .title {
             text-align: center;
-            font-size: 29px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+
+            font-size: 32px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.3px;
         }
 
         .subtitle {
             text-align: center;
-            margin-top: 8px;
-            margin-bottom: 28px;
 
-            color: #a7c5bf;
+            margin-top: 7px;
+            margin-bottom: 27px;
+
+            color: #9bbab3;
+
             font-size: 14px;
         }
 
+        /* LOGIN CARD */
+
         .card {
-            background: rgba(10, 42, 36, 0.88);
+            background: rgba(9, 39, 34, 0.88);
 
-            border: 1px solid rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.075);
 
-            border-radius: 24px;
+            border-radius: 25px;
 
             padding: 28px 23px;
 
             box-shadow:
-                0 20px 60px rgba(0,0,0,0.35),
+                0 25px 70px rgba(0,0,0,0.40),
                 inset 0 1px rgba(255,255,255,0.04);
 
-            backdrop-filter: blur(18px);
+            backdrop-filter: blur(20px);
         }
 
         .welcome {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 20px;
+            font-size: 21px;
+
+            font-weight: 700;
+
+            margin-bottom: 21px;
         }
+
+        /* INPUTS */
 
         .input-box {
             margin-bottom: 16px;
@@ -106,6 +148,7 @@
             display: block;
 
             font-size: 13px;
+
             color: #9ebbb5;
 
             margin-bottom: 8px;
@@ -118,11 +161,11 @@
 
             border-radius: 14px;
 
-            border: 1px solid #244d45;
+            border: 1px solid #234b43;
 
             outline: none;
 
-            background: #0c2d27;
+            background: #0b2b26;
 
             color: white;
 
@@ -134,12 +177,15 @@
         .input-box input:focus {
             border-color: #25d366;
 
-            box-shadow: 0 0 0 3px rgba(37,211,102,0.10);
+            box-shadow:
+                0 0 0 3px rgba(37,211,102,0.10);
         }
 
         .input-box input::placeholder {
-            color: #66827c;
+            color: #66817b;
         }
+
+        /* BUTTON */
 
         .login-btn {
             width: 100%;
@@ -152,17 +198,20 @@
 
             background: #25d366;
 
-            color: #062c20;
+            color: #052c20;
 
             font-size: 16px;
 
-            font-weight: 700;
+            font-weight: 800;
 
             cursor: pointer;
 
             margin-top: 7px;
 
             transition: 0.2s;
+
+            box-shadow:
+                0 8px 25px rgba(37,211,102,0.16);
         }
 
         .login-btn:hover {
@@ -175,8 +224,11 @@
             transform: scale(0.98);
         }
 
+        /* DIVIDER */
+
         .divider {
             display: flex;
+
             align-items: center;
 
             gap: 12px;
@@ -199,6 +251,8 @@
             background: #24453f;
         }
 
+        /* REGISTER */
+
         .register {
             text-align: center;
 
@@ -215,7 +269,13 @@
             font-weight: 700;
         }
 
-        .security {
+        .register a:hover {
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+
+        .footer {
             text-align: center;
 
             margin-top: 22px;
@@ -223,19 +283,39 @@
             font-size: 11px;
 
             color: #56736d;
+
+            letter-spacing: 0.2px;
         }
 
+        /* SMALL PHONES */
+
         @media (max-width: 420px) {
+
+            .container {
+                width: 91%;
+            }
 
             .card {
                 padding: 24px 18px;
             }
 
             .title {
-                font-size: 26px;
+                font-size: 28px;
+            }
+
+            .logo {
+                width: 84px;
+                height: 84px;
+            }
+
+            .logo img {
+                width: 60px;
+                height: 60px;
             }
         }
+
     </style>
+
 </head>
 
 <body>
@@ -243,13 +323,18 @@
     <div class="container">
 
         <div class="logo">
-            <img src="/static/synapse-logo%20%282%29.png" alt="Synapse">
+            <img
+                src="/static/synapse-logo%20%282%29.png"
+                alt="Synapse Logo"
+            >
         </div>
 
-        <h1 class="title">Synapse</h1>
+        <h1 class="title">
+            Synapse
+        </h1>
 
         <p class="subtitle">
-            Your private space to connect
+            Connect. Chat. Stay in touch.
         </p>
 
         <div class="card">
@@ -262,7 +347,9 @@
 
                 <div class="input-box">
 
-                    <label>Username</label>
+                    <label>
+                        Username
+                    </label>
 
                     <input
                         type="text"
@@ -276,7 +363,9 @@
 
                 <div class="input-box">
 
-                    <label>Password</label>
+                    <label>
+                        Password
+                    </label>
 
                     <input
                         type="password"
@@ -288,7 +377,10 @@
 
                 </div>
 
-                <button class="login-btn" type="submit">
+                <button
+                    class="login-btn"
+                    type="submit"
+                >
                     Sign In
                 </button>
 
@@ -299,26 +391,39 @@
             </div>
 
             <div class="register">
+
                 Don't have an account?
-                <a href="/register">Create account</a>
+
+                <a href="/register">
+                    Create account
+                </a>
+
             </div>
 
         </div>
 
-        <div class="security">
-            🔒 Private • Secure • Personal
+        <div class="footer">
+            Synapse • Connect with people
         </div>
 
     </div>
 
+
+    <script>
+
+        if ("serviceWorker" in navigator) {
+
+            window.addEventListener("load", () => {
+
+                navigator.serviceWorker.register(
+                    "/service-worker.js"
+                );
+
+            });
+
+        }
+
+    </script>
+
 </body>
 </html>
-<script>
-if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-        navigator.serviceWorker.register(
-            "/service-worker.js"
-        );
-    });
-}
-</script>
